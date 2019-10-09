@@ -15,3 +15,17 @@ require('foundation-sites');
 
 
 $(document).foundation();
+
+
+// Temp code here // 
+
+// let p = document.querySelector('p');
+ 
+// p.remove();
+
+let ps = document.querySelectorAll('p');
+
+ps.forEach(function(p) {
+    p.textContent = '******'
+    // p.remove();
+});
