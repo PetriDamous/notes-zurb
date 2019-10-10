@@ -33,7 +33,26 @@ const notes = [
     }
 ];
 
+const bodyHTML = document.querySelector('body');
+const createNote = document.getElementById('create-note');
+const removeAll = document.getElementById('remove-all');
 
+createNote.addEventListener('click', function() {
+    const newNote = document.createElement('p');
+    newNote.className = 'note';
+    newNote.textContent = 'All sleep no play';
+    bodyHTML.appendChild(newNote);
+});
+
+removeAll.addEventListener('click', function() {
+    const noteList = document.querySelectorAll('.note');
+    noteList.forEach(function(note) {
+        note.remove();
+    });
+});
+
+
+/*
 // Temp code here // 
 
 
@@ -54,3 +73,4 @@ ps.forEach(function(p) {
 const newPara = document.createElement('p');
 newPara.textContent = 'Walk a puppy';
 document.querySelector('body').appendChild(newPara);
+*/
