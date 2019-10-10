@@ -16,16 +16,41 @@ require('foundation-sites');
 
 $(document).foundation();
 
+const notes = [
+    {
+        title: 'Wash dishes',
+        body: 'Remember to was dishes'
+    },
+
+    {
+        title: 'Clean bathroom',
+        body: 'Rembmer to unclog drains and clean bathtub'
+    },
+
+    {
+        title: 'Pay electric bill',
+        body: 'Electric bill is due'
+    }
+];
+
 
 // Temp code here // 
 
+
+// Remove single element
 // let p = document.querySelector('p');
  
 // p.remove();
 
+// Change text of element
 let ps = document.querySelectorAll('p');
 
 ps.forEach(function(p) {
     p.textContent = '******'
     // p.remove();
 });
+
+// Add new element
+const newPara = document.createElement('p');
+newPara.textContent = 'Walk a puppy';
+document.querySelector('body').appendChild(newPara);
