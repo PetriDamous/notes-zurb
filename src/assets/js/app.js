@@ -36,6 +36,7 @@ const notes = [
 const bodyHTML = document.querySelector('body');
 const createNote = document.getElementById('create-note');
 const removeAll = document.getElementById('remove-all');
+const searchText = document.getElementById('search-text');
 
 createNote.addEventListener('click', function() {
     const newNote = document.createElement('p');
@@ -49,6 +50,10 @@ removeAll.addEventListener('click', function() {
     noteList.forEach(function(note) {
         note.remove();
     });
+});
+
+searchText.addEventListener('input', function(e) {
+    console.log(e.target.value);
 });
 
 
