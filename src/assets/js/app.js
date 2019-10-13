@@ -33,27 +33,55 @@ const notes = [
     }
 ];
 
-const bodyHTML = document.querySelector('body');
-const createNote = document.getElementById('create-note');
-const removeAll = document.getElementById('remove-all');
-const searchNotes = document.getElementById('search-notes');
 
-createNote.addEventListener('click', function() {
+// Elements
+const bodyHTML = document.querySelector('body');
+const notesDiv = document.getElementById('notes');
+
+// Components
+const createBtn = document.getElementById('create-btn');
+const removeBtn = document.getElementById('remove-btn');
+const searchField = document.getElementById('search-field');
+
+// Filter
+const filters = {
+    searchNotes: ''
+}
+
+function renderNotes(notes, filters) {
+    const filteredNotes = notes.filter(function (note) {        
+        return note.title.toLowerCase().includes(filters.searchNotes.toLowerCase());
+    });
+
+    notesDiv.innerHTML = '';
+
+    filteredNotes.forEach(function (note) {
+        const noteEl = document.createElement('p');
+        noteEl.className = 'note';
+        noteEl.textContent = note.title;
+        notesDiv.appendChild(noteEl);
+    });
+}
+
+renderNotes(notes, filters);
+
+createBtn.addEventListener('click', function() {
     const newNote = document.createElement('p');
     newNote.className = 'note';
     newNote.textContent = 'All sleep no play';
-    bodyHTML.appendChild(newNote);
+    notesDiv.appendChild(newNote);
 });
 
-removeAll.addEventListener('click', function() {
-    const noteList = document.querySelectorAll('.note');
+removeBtn.addEventListener('click', function() {
+    const noteList = document.querySelectorAll('.note');    
     noteList.forEach(function(note) {
         note.remove();
     });
 });
 
-searchNotes.addEventListener('input', function(e) {
-    console.log(e.target.value);
+searchField.addEventListener('input', function(e) {
+    filters.searchNotes = e.target.value;
+    renderNotes(notes, filters);    
 });
 
 
