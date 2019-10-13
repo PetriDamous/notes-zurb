@@ -42,6 +42,7 @@ const notesDiv = document.getElementById('notes');
 const createBtn = document.getElementById('create-btn');
 const removeBtn = document.getElementById('remove-btn');
 const searchField = document.getElementById('search-field');
+const newForm = document.getElementById('new-form');
 
 // Filter
 const filters = {
@@ -84,6 +85,11 @@ searchField.addEventListener('input', function(e) {
     renderNotes(notes, filters);    
 });
 
+newForm.addEventListener('submit', function (e) {
+    e.preventDefault();
+    console.log(e.target.titleName.value);
+    e.target.titleName.value = '';
+});
 
 /*
 // Temp code here // 
@@ -107,3 +113,4 @@ const newPara = document.createElement('p');
 newPara.textContent = 'Walk a puppy';
 document.querySelector('body').appendChild(newPara);
 */
+
