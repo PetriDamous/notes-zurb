@@ -35,14 +35,13 @@ const notes = [
 
 
 // Elements
-const bodyHTML = document.querySelector('body');
 const notesDiv = document.getElementById('notes');
 
 // Components
 const createBtn = document.getElementById('create-btn');
 const removeBtn = document.getElementById('remove-btn');
 const searchField = document.getElementById('search-field');
-const newForm = document.getElementById('new-form');
+
 
 // Filter
 const filters = {
@@ -85,32 +84,11 @@ searchField.addEventListener('input', function(e) {
     renderNotes(notes, filters);    
 });
 
-newForm.addEventListener('submit', function (e) {
-    e.preventDefault();
-    console.log(e.target.titleName.value);
-    e.target.titleName.value = '';
+const forFun = document.querySelector('#for-fun');
+
+forFun.addEventListener('change', function (e) {
+    console.log(e)
 });
 
-/*
-// Temp code here // 
 
-
-// Remove single element
-// let p = document.querySelector('p');
- 
-// p.remove();
-
-// Change text of element
-let ps = document.querySelectorAll('p');
-
-ps.forEach(function(p) {
-    p.textContent = '******'
-    // p.remove();
-});
-
-// Add new element
-const newPara = document.createElement('p');
-newPara.textContent = 'Walk a puppy';
-document.querySelector('body').appendChild(newPara);
-*/
 
