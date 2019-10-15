@@ -89,5 +89,18 @@ filterBy.addEventListener('change', function(e) {
     console.log(e.target.value);
 });
 
+const user = {
+    id: 1,
+    name: 'Chris Redfield',
+    age: 45
+}
+
+const userJSON = JSON.stringify(user);
 
 
+
+localStorage.setItem('user1', userJSON)
+
+const userObj = JSON.parse(localStorage.getItem('user1'))
+
+console.log(userObj.name)
