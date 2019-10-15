@@ -41,6 +41,7 @@ const notesDiv = document.getElementById('notes');
 const createBtn = document.getElementById('create-btn');
 const removeBtn = document.getElementById('remove-btn');
 const searchField = document.getElementById('search-field');
+const filterBy = document.getElementById('filter-by');
 
 
 // Filter
@@ -84,10 +85,8 @@ searchField.addEventListener('input', function(e) {
     renderNotes(notes, filters);    
 });
 
-const forFun = document.querySelector('#for-fun');
-
-forFun.addEventListener('change', function (e) {
-    console.log(e)
+filterBy.addEventListener('change', function(e) {
+    console.log(e.target.value);
 });
 
 
