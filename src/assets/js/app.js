@@ -29,7 +29,7 @@ const notesDiv = document.getElementById('notes');
 
 // Components
 const createBtn = document.getElementById('create-btn');
-const removeBtn = document.getElementById('remove-btn');
+const deleteAll = document.getElementById('delete-all');
 const searchField = document.getElementById('search-field');
 const filterBy = document.getElementById('filter-by');
 
@@ -77,11 +77,10 @@ createBtn.addEventListener('click', function() {
     renderNotes(notes, filters);
 });
 
-removeBtn.addEventListener('click', function() {
-    const noteList = document.querySelectorAll('.note');    
-    noteList.forEach(function(note) {
-        note.remove();
-    });
+deleteAll.addEventListener('click', function() {
+    localStorage.clear();
+    notes = [];
+    renderNotes(notes, filters);
 });
 
 searchField.addEventListener('input', function(e) {
