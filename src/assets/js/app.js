@@ -16,23 +16,13 @@ require('foundation-sites');
 
 $(document).foundation();
 
-const notes = [
-    {
-        title: 'Wash dishes',
-        body: 'Remember to was dishes'
-    },
+let notes = [];
 
-    {
-        title: 'Clean bathroom',
-        body: 'Rembmer to unclog drains and clean bathtub'
-    },
+const notesJSON = localStorage.getItem('notes');
 
-    {
-        title: 'Pay electric bill',
-        body: 'Electric bill is due'
-    }
-];
-
+if (notesJSON !== null) {
+    notes = JSON.parse(notesJSON);
+}
 
 // Elements
 const notesDiv = document.getElementById('notes');
@@ -59,7 +49,13 @@ function renderNotes(notes, filters) {
     filteredNotes.forEach(function (note) {
         const noteEl = document.createElement('p');
         noteEl.className = 'note';
-        noteEl.textContent = note.title;
+
+        if (note.title.length > 0) {
+            noteEl.textContent = note.title;
+        } else {
+            noteEl.textContent = 'Untitled Note';
+        }                
+                
         notesDiv.appendChild(noteEl);
     });
 }
@@ -67,10 +63,18 @@ function renderNotes(notes, filters) {
 renderNotes(notes, filters);
 
 createBtn.addEventListener('click', function() {
-    const newNote = document.createElement('p');
-    newNote.className = 'note';
-    newNote.textContent = 'All sleep no play';
-    notesDiv.appendChild(newNote);
+    notes.push({
+        title: '',
+        body: ''
+    });
+    
+    notes.forEach(function (note) {
+        note.title.trim();
+    });
+
+    localStorage.setItem('notes', JSON.stringify(notes));
+
+    renderNotes(notes, filters);
 });
 
 removeBtn.addEventListener('click', function() {
@@ -89,18 +93,3 @@ filterBy.addEventListener('change', function(e) {
     console.log(e.target.value);
 });
 
-const user = {
-    id: 1,
-    name: 'Chris Redfield',
-    age: 45
-}
-
-const userJSON = JSON.stringify(user);
-
-
-
-localStorage.setItem('user1', userJSON)
-
-const userObj = JSON.parse(localStorage.getItem('user1'))
-
-console.log(userObj.name)
