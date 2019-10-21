@@ -14,15 +14,32 @@ const getNotes = () => {
 
 // Render note in DOM
 const createNote = (note) => {
-    const noteEl = document.createElement('p');
-    noteEl.className = 'note';
 
+    // Creates needed elements
+    const noteEl = document.createElement('div');
+    const noteTxt = document.createElement('p');
+    const deleteBtn = document.createElement('button');
+
+    // Assigns classes
+    noteEl.className = 'note';    
+    deleteBtn.className = 'button alert';
+
+    // Sets display 
+    noteTxt.style.display = 'inline-block';
+
+    // Fills in text
     if (note.title.length > 0) {
-        noteEl.textContent = note.title;
+        noteTxt.textContent = note.title;
     } else {
-        noteEl.textContent = 'Untitled Note';
+        noteTxt.textContent = 'Untitled Note';
     }
+
+    deleteBtn.textContent = 'Delete';
     
+    // Appends to parent element
+    noteEl.appendChild(noteTxt);
+    noteEl.appendChild(deleteBtn);    
+
     return noteEl;
 }
 
