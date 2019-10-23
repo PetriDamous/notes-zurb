@@ -1,4 +1,5 @@
 import { getNotes, renderNotes } from './notes-functions';
+const uuidv4 = require('uuid/v4');
 
 let notes = getNotes();
 
@@ -17,6 +18,7 @@ renderNotes(notes, filters);
 
 createBtn.addEventListener('click', function() {
     notes.push({
+        id: uuidv4(),
         title: '',
         body: ''
     });
