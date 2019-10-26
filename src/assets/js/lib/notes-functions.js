@@ -1,6 +1,11 @@
 import { getNotes, saveNotes, removeNote } from './notes';
 import { notes_area } from './global-var.js';
-// import { getFilters }
+import { getFilters } from './filters';
+
+// Filters
+const filters = getFilters();
+
+
 
 const notesArea = notes_area();
 
@@ -30,7 +35,7 @@ const createNote = (note) => {
     // Adds event listners
     deleteBtn.addEventListener('click', function() {
         let notes = getNotes();
-        // removeNote(note.id);
+        removeNote(note.id);
         renderNotes(notes, filters);
     });
 
