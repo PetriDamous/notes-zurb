@@ -1,13 +1,15 @@
-import { getNotes, renderNotes } from './notes-functions';
-const uuidv4 = require('uuid/v4');
+import { renderNotes, createNote } from './notes-functions';
+import { getNotes, saveNotes, addNote } from './notes';
+import { create_btn,  delete_all, search_field, filter_by } from './global-var';
 
-let notes = getNotes();
+// Variables
+const notes = getNotes();
 
 // Components
-const createBtn = document.getElementById('create-btn');
-const deleteAll = document.getElementById('delete-all');
-const searchField = document.getElementById('search-field');
-const filterBy = document.getElementById('filter-by');
+const createBtn = create_btn();
+const deleteAll = delete_all();
+const searchField = search_field();
+const filterBy = filter_by();
 
 // Filter
 const filters = {
@@ -17,18 +19,9 @@ const filters = {
 renderNotes(notes, filters);
 
 createBtn.addEventListener('click', function() {
-    notes.push({
-        id: uuidv4(),
-        title: '',
-        body: ''
-    });
+    addNote();
+    saveNotes();
     
-    notes.forEach(function (note) {
-        note.title.trim();
-    });
-
-    localStorage.setItem('notes', JSON.stringify(notes));
-
     renderNotes(notes, filters);
 });
 
@@ -46,3 +39,4 @@ searchField.addEventListener('input', function(e) {
 filterBy.addEventListener('change', function(e) {
     console.log(e.target.value);
 });
+

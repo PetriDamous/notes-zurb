@@ -1,0 +1,5 @@
+// Filter
+const filters = {
+    searchNotes: ''
+}
+

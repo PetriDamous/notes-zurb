@@ -1,21 +1,12 @@
-// Elements
-const notesDiv = document.getElementById('notes');
+import { getNotes, saveNotes, removeNote } from './notes';
+import { notes_area } from './global-var.js';
 
-// Get notes from database
-const getNotes = () => {
-    const notesJSON = localStorage.getItem('notes');
+const notesArea = notes_area();
 
-    if (notesJSON !== null) {
-        return JSON.parse(notesJSON);
-    } else {
-        return [];
-    }
-}
-
-// Render note in DOM
+// Create Note Element
 const createNote = (note) => {
 
-    // Creates needed elements
+    // Creates needed elements for the DOM
     const noteEl = document.createElement('div');
     const noteTxt = document.createElement('p');
     const deleteBtn = document.createElement('button');
@@ -35,27 +26,33 @@ const createNote = (note) => {
     }
 
     deleteBtn.textContent = 'Delete';
-    
+     
     // Appends to parent element
     noteEl.appendChild(noteTxt);
-    noteEl.appendChild(deleteBtn);    
+    noteEl.appendChild(deleteBtn);
+    
+    // Adds event listners
+    deleteBtn.addEventListener('click', function() {
+        let notes = getNotes();
+        // removeNote(note.id);
+        renderNotes(notes, filters);
+    });
 
     return noteEl;
 }
 
-// Render notes 
+// Render notes to the DOM
 const renderNotes = (notes, filters) => {
     const filteredNotes = notes.filter(function (note) {        
         return note.title.toLowerCase().includes(filters.searchNotes.toLowerCase());
     });
 
-    notesDiv.innerHTML = '';
+    notesArea.innerHTML = '';
 
     filteredNotes.forEach(function (note) {
         const noteEl = createNote(note);                   
-        notesDiv.appendChild(noteEl);
+        notesArea.appendChild(noteEl);
     });
 }
 
-
-export { getNotes, createNote, renderNotes };
+export { createNote, renderNotes };
