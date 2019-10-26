@@ -39,10 +39,15 @@ const addNote = () => {
         title: '',
         body: ''
     });
-    
-    getNotes().forEach(function (note) {
+
+    notes.forEach(function (note) {
         note.title.trim();
     });
+
+    // Handles untitled notes
+    notes.forEach(function(note) {        
+        if (note.title.length <= 0) note.title = 'Untitled Note';        
+    });    
 }
 
 

@@ -1,5 +1,6 @@
 import { getNotes, saveNotes, removeNote } from './notes';
 import { notes_area } from './global-var.js';
+// import { getFilters }
 
 const notesArea = notes_area();
 
@@ -19,12 +20,7 @@ const createNote = (note) => {
     noteTxt.style.display = 'inline-block';
 
     // Fills in text
-    if (note.title.length > 0) {
-        noteTxt.textContent = note.title;
-    } else {
-        noteTxt.textContent = 'Untitled Note';
-    }
-
+    noteTxt.textContent = note.title;
     deleteBtn.textContent = 'Delete';
      
     // Appends to parent element
@@ -43,6 +39,7 @@ const createNote = (note) => {
 
 // Render notes to the DOM
 const renderNotes = (notes, filters) => {
+    // debugger
     const filteredNotes = notes.filter(function (note) {        
         return note.title.toLowerCase().includes(filters.searchNotes.toLowerCase());
     });
