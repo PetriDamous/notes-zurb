@@ -1,16 +1,14 @@
 import { getNotes, saveNotes, removeNote } from './notes';
-import { notes_area } from './global-var.js';
+import { notes_area } from './global-var';
 import { getFilters } from './filters';
 
 // Filters
 const filters = getFilters();
 
-
-
 const notesArea = notes_area();
 
 // Create Note Element
-const createNote = (note) => {
+const createNote = (note, notes) => {
 
     // Creates needed elements for the DOM
     const noteEl = document.createElement('div');
@@ -34,8 +32,9 @@ const createNote = (note) => {
     
     // Adds event listners
     deleteBtn.addEventListener('click', function() {
-        let notes = getNotes();
+        // let notes = getNotes();
         removeNote(note.id);
+        saveNotes();
         renderNotes(notes, filters);
     });
 
@@ -44,7 +43,7 @@ const createNote = (note) => {
 
 // Render notes to the DOM
 const renderNotes = (notes, filters) => {
-    // debugger
+    
     const filteredNotes = notes.filter(function (note) {        
         return note.title.toLowerCase().includes(filters.searchNotes.toLowerCase());
     });
@@ -52,7 +51,7 @@ const renderNotes = (notes, filters) => {
     notesArea.innerHTML = '';
 
     filteredNotes.forEach(function (note) {
-        const noteEl = createNote(note);                   
+        const noteEl = createNote(note, notes);                   
         notesArea.appendChild(noteEl);
     });
 }

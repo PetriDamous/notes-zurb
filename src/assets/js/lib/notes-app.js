@@ -1,5 +1,5 @@
 import { renderNotes, createNote } from './notes-functions';
-import { getNotes, saveNotes, addNote } from './notes';
+import { getNotes, saveNotes, addNote, removeAll } from './notes';
 import { create_btn,  delete_all, search_field, filter_by } from './global-var';
 import { getFilters, updateFilters } from './filters';
 
@@ -20,14 +20,15 @@ renderNotes(notes, filters);
 createBtn.addEventListener('click', function() {
     addNote();
     saveNotes();
-    console.log(notes)
+    console.log('create: ', notes);    
     renderNotes(notes, filters);
 });
 
 deleteAll.addEventListener('click', function() {
-    localStorage.clear();
-    notes = [];
-    saveNotes();
+    let notes = getNotes(); 
+    removeAll();    
+    saveNotes();      
+    console.log('delete: ', notes);
     renderNotes(notes, filters);
 });
 
