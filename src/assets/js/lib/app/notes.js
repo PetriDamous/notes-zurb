@@ -1,18 +1,15 @@
 const uuidv4 = require('uuid/v4');
-import { notes_area } from './global-var';
 
 let notes = [];
-
-const notesArea = notes_area();
 
 // Get notes from database
 const loadNotes = () => {
     const notesJSON = localStorage.getItem('notes');
     
     try {
-        return notesJSON ? JSON.parse(notesJSON) : []
+        return notesJSON ? JSON.parse(notesJSON) : [];
     } catch (e) {
-        console.log(e)
+        [];
     }    
 }
 
@@ -32,9 +29,9 @@ const removeNote = (id) => {
 }
 
 // Remove all
-const removeAll = () => {
-    notes = [];
-    localStorage.clear();            
+const removeAll = () => {    
+    localStorage.clear();
+    notes = loadNotes();            
 }
 
 // Adds note to array
@@ -62,7 +59,5 @@ const addNote = () => {
 notes = loadNotes();
 
 const getNotes = () => notes;
-
-// console.log(notes)
 
 export { getNotes, saveNotes, removeNote, addNote, removeAll };

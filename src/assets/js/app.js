@@ -16,8 +16,4 @@ require('foundation-sites');
 
 $(document).foundation();
 
-require('./lib/notes-functions');
-require('./lib/notes-app');
-require('./lib/notes');
-require('./lib/filters');
-require('./lib/view');
+require('./lib/app/index');
