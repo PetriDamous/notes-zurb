@@ -10,19 +10,19 @@ const createNote = (note) => {
 
     // Creates needed elements for the DOM
     const noteEl = document.createElement('div');
-    const noteTxt = document.createElement('p');
+    const noteTxt = document.createElement('a');
     const deleteBtn = document.createElement('button');
 
     // Assigns classes
     noteEl.className = 'note';    
-    deleteBtn.className = 'button alert';
-
-    // Sets display 
-    noteTxt.style.display = 'inline-block';
+    deleteBtn.className = 'button alert';    
 
     // Fills in text
     noteTxt.textContent = note.title;
     deleteBtn.textContent = 'Delete';
+
+    // Fills in href for anchors
+    noteTxt.setAttribute('href', `/edit.html#${note.id}`);    
      
     // Appends to parent element
     noteEl.appendChild(noteTxt);

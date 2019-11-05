@@ -51,13 +51,18 @@ const addNote = () => {
     // Handles untitled notes
     notes.forEach(function(note) {        
         if (note.title.length <= 0) note.title = 'Untitled Note';        
-    });    
+    });  
+    
 }
 
+// Links to new edit page for new note
+const newNote = () => {
+    return location.assign(`/edit.html#${notes[notes.length - 1].id}`);
+}
 
 // Allows notes to be accessed by other files
 notes = loadNotes();
 
 const getNotes = () => notes;
 
-export { getNotes, saveNotes, removeNote, addNote, removeAll };
+export { getNotes, saveNotes, removeNote, addNote, removeAll, newNote };
