@@ -2,7 +2,7 @@ import { renderNotes } from './view';
 import { saveNotes, addNote, removeAll, newNote } from './notes';
 import { create_btn,  delete_all, search_field, filter_by } from './global';
 import { setFilters } from './filters';
-
+console.log('index');
 // Components
 const createBtn = create_btn();
 const deleteAll = delete_all();

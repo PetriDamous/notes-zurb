@@ -136,6 +136,20 @@ function javascript() {
     .pipe(gulp.dest(PATHS.dist + '/assets/js'));
 }
 
+// Copy javascript files to "dist" folder
+// In production, the file is minified
+// --------------------------------------------------------------
+// function solojs() {
+  // return gulp.src(PATHS.solojs)
+    // .pipe($.sourcemaps.init())
+    // .pipe($.babel({ignore: ['what-input.js','jeopSolo.js','ddMulti.js','doOrDoNot.js','dragDrop.js']}))
+    // .pipe($.if(PRODUCTION, $.uglify()
+      // .on('error', e => { console.log(e); })
+    // ))
+    // .pipe($.if(!PRODUCTION, $.sourcemaps.write()))
+    // .pipe(gulp.dest(PATHS.dist + '/assets/js'));
+// }
+
 // Copy images to the "dist" folder
 // In production, the images are compressed
 function images() {
