@@ -15,10 +15,3 @@ require('foundation-sites');
 
 
 $(document).foundation();
-
-// require('./app/filters');
-// require('./app/global');
-// require('./app/notes');
-// require('./app/view');
-
-require('./app/index.js');

@@ -18,6 +18,16 @@ const saveNotes = () => {
     localStorage.setItem('notes', JSON.stringify(notes)); 
 }
 
+const saveEdit = (id, title, body) => {
+
+    const note = notes.find(function(note) {
+        return note.id === id;
+    });
+    
+    note.title = title;
+    note.body = body;
+}
+
 // Remove note from array
 const removeNote = (id) => {    
     
@@ -65,4 +75,4 @@ notes = loadNotes();
 
 const getNotes = () => notes;
 
-export { getNotes, saveNotes, removeNote, addNote, removeAll, newNote };
+export { getNotes, saveNotes, saveEdit, removeNote, addNote, removeAll, newNote };

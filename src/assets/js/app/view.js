@@ -46,8 +46,8 @@ const renderNotes = () => {
     const filteredNotes = notes.filter(function (note) {        
         return note.title.toLowerCase().includes(filters.searchNotes.toLowerCase());
     });
-
-    notesArea.innerHTML = '';
+    
+    notesArea.innerHTML = '';    
 
     filteredNotes.forEach(function (note) {
         const noteEl = createNote(note);                   
