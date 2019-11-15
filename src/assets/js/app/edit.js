@@ -1,5 +1,5 @@
 import { note_title, note_body, edit_delete, edit_save } from './global';
-import { getNotes, removeNote,  saveNotes, saveEdit } from './notes';
+import { getNotes, removeNote,  saveNotes, saveEdit, syncPage } from './notes';
 
 const noteTitle = note_title();
 const noteBody = note_body();
@@ -29,7 +29,7 @@ const save = () => {
     saveNotes();
 }
 
-noteTitle.addEventListener('input', function(e) {    
+noteTitle.addEventListener('input', function() {       
     save();    
 });
 
@@ -46,3 +46,8 @@ editDlt.addEventListener('click', function() {
     saveNotes();
     location.assign('/index.html');
 });
+
+window.addEventListener('storage', syncPage, false);
+// window.addEventListener('click', function(e) {
+    // console.log('click')
+// })

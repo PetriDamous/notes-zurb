@@ -1,5 +1,5 @@
 import { renderNotes } from './view';
-import { saveNotes, addNote, removeAll, newNote } from './notes';
+import { saveNotes, addNote, removeAll, newNote, syncPage } from './notes';
 import { create_btn,  delete_all, search_field, filter_by } from './global';
 import { setFilters } from './filters';
 

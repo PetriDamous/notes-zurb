@@ -1,4 +1,5 @@
 const uuidv4 = require('uuid/v4');
+const moment = require('moment');
 
 let notes = [];
 
@@ -70,9 +71,15 @@ const newNote = () => {
     return location.assign(`/edit.html#${notes[notes.length - 1].id}`);
 }
 
+// Allows notes to sync across pages
+const syncPage = (e) => {
+    console.log(e)
+}
+
+
 // Allows notes to be accessed by other files
 notes = loadNotes();
 
 const getNotes = () => notes;
 
-export { getNotes, saveNotes, saveEdit, removeNote, addNote, removeAll, newNote };
+export { getNotes, saveNotes, saveEdit, removeNote, addNote, removeAll, newNote, syncPage };
