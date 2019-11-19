@@ -4,7 +4,7 @@ const moment = require('moment');
 let notes = [];
 
 // Get notes from database
-const loadNotes = () => {
+const loadNotes = () => {    
     const notesJSON = localStorage.getItem('notes');
     
     try {
@@ -19,7 +19,7 @@ const saveNotes = () => {
     localStorage.setItem('notes', JSON.stringify(notes)); 
 }
 
-const saveEdit = (id, title, body) => {
+const saveEdit = (id, title, body, timeStamp) => {
 
     const note = notes.find(function(note) {
         return note.id === id;
@@ -27,6 +27,7 @@ const saveEdit = (id, title, body) => {
     
     note.title = title;
     note.body = body;
+    note.updatedAt = timeStamp;
 }
 
 // Remove note from array
@@ -48,11 +49,14 @@ const removeAll = () => {
 // Adds note to array
 const addNote = () => {    
     const id = uuidv4();
+    const timestamp = moment().valueOf();
 
     notes.push({
         id: id,
         title: '',
-        body: ''
+        body: '',
+        createdAt: timestamp,
+        updatedAt: timestamp
     });
 
     notes.forEach(function (note) {

@@ -1,10 +1,12 @@
-import { note_title, note_body, edit_delete, edit_save } from './global';
+import { note_title, note_body, edit_delete, edit_save, last_edit } from './global';
 import { getNotes, removeNote,  saveNotes, saveEdit, syncPage } from './notes';
+const moment = require('moment');
 
 const noteTitle = note_title();
 const noteBody = note_body();
 const editDlt = edit_delete();
 const editSave = edit_save();
+const lastEdit = last_edit();
 
 const notes = getNotes();
 
@@ -18,16 +20,28 @@ if (note === undefined) {
     location.assign('/index.html');
 }
 
-noteTitle.value = note.title;
-noteBody.value = note.body;
+
+const lastUpdate = (time) => {
+    return `Last edited: ${moment(time).fromNow()}`;
+}
 
 const save = () => {
+    const timeStamp = moment().valueOf();
+    lastEdit.textContent = lastUpdate(timeStamp);
+    // console.log(typeof moment(timeStamp).fromNow())
     const title = noteTitle.value;
     const body = noteBody.value;
     
-    saveEdit(noteID, title, body);
+    saveEdit(noteID, title, body, timeStamp);
     saveNotes();
 }
+
+noteTitle.value = note.title;
+noteBody.value = note.body;
+lastEdit.textContent = lastUpdate(note.updatedAt);
+
+// setInterval(() => { lastEdit.textContent = lastUpdate(note.updatedAt); }, 3000);
+
 
 noteTitle.addEventListener('input', function() {       
     save();    
@@ -47,7 +61,9 @@ editDlt.addEventListener('click', function() {
     location.assign('/index.html');
 });
 
-window.addEventListener('storage', syncPage, false);
+
+
+// window.addEventListener('storage', syncPage, false);
 // window.addEventListener('click', function(e) {
     // console.log('click')
 // })

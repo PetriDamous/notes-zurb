@@ -1,5 +1,6 @@
 // Elements
 export const notes_area = () => document.getElementById('notes-area');
+export const last_edit = () => document.getElementById('last-edit');
 
 // Components
 export const create_btn = () => document.getElementById('create-btn');

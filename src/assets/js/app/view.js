@@ -38,10 +38,60 @@ const createNote = (note) => {
     return noteEl;
 }
 
+// Sorts Notes
+const sortedNotes = (notes, filters) => {
+    
+    switch (filters.sortBy) {
+        case 'byEdit':
+            
+            notes.sort((a, b) => {
+                if (a.updatedAt > b.updatedAt) {                    
+                    return -1;
+                } else if (a.updatedAt < b.updatedAt) {
+                    return 1;
+                } else {
+                    return 0;
+                }
+            });            
+
+            break;
+
+        case 'byCreated':
+            notes.sort((a, b) => {
+                if (a.createdAt > b.createdAt) {                    
+                    return -1;
+                } else if (a.createdAt < b.createdAt) {
+                    return 1;
+                } else {
+                    return 0;
+                }
+            });
+
+            break;
+
+        case 'byAlpha':
+            notes.sort((a, b) => {
+                if (a.title.toLowerCase() > b.title.toLowerCase()) {                    
+                    return 1;
+                } else if (a.title.toLowerCase() < b.title.toLowerCase()) {
+                    return -1;
+                } else {
+                    return 0;
+                }
+            });
+
+            break;
+    }
+
+    return notes;
+}
+
 // Render notes to the DOM
 const renderNotes = () => {
-    const notes = getNotes();
-    const filters = getFilters();
+    let notes = getNotes();
+    let filters = getFilters();
+
+    notes = sortedNotes(notes, filters);
     
     const filteredNotes = notes.filter(function (note) {        
         return note.title.toLowerCase().includes(filters.searchNotes.toLowerCase());

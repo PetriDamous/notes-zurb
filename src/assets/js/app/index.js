@@ -28,7 +28,8 @@ searchField.addEventListener('input', function(e) {
     renderNotes();    
 });
 
-filterBy.addEventListener('change', function(e) {
-    console.log(e.target.value);
+filterBy.addEventListener('change', function(e) {        
+    setFilters(filterBy.selectedIndex);
+    renderNotes();
 });
 
