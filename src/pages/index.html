@@ -1,7 +1,32 @@
-<h1>Notes App</h1>
-<h2>Take notes and never forget</h2>
+<header class="header">
+    <div class="header__logo">logo goes here</div>    
+</header>
 
-<input id="search-field" type="text" placeholder="Search">
+<div class="header__search">
+    <div class="header__search-icon">icon goes here</div>
+    <input id="search-field" class="header__search-input" type="text" placeholder="Search">
+</div>
+
+<div class="options">
+    <div class="options__container">
+        <ul>
+            <li class="options__item">Sort by</li>
+            <li class="options__item">Select notes</li>
+            <li id="create-btn" class="options__item">Add Note</li>
+            <li id="delete-all" class="options__item">Delete all</li>
+            <li class="options__item">Manage Category</li>
+            <li class="options__item">Trash</li>
+            <li class="options__item">Theme</li>
+            <li class="options__item">Switch</li>
+        </ul>
+    </div>
+</div>
+
+<div id="notes-area" class="notes"></div>
+
+
+
+<!-- <input id="search-field" type="text" placeholder="Search">
 
 <div id="notes-area"></div> 
 
@@ -12,6 +37,6 @@
     <option value="byEdit">Sort by last edit</option>
     <option value="byCreated">Sort by recently created</option>
     <option value="byAlpha">Sort alphabetically</option>
-</select>
+</select> -->
 
 
