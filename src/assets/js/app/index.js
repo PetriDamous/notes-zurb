@@ -32,4 +32,3 @@ filterBy.addEventListener('change', function(e) {
     setFilters(filterBy.selectedIndex);
     renderNotes();
 });
-

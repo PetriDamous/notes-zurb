@@ -1,4 +1,4 @@
-import { note_title, note_body, edit_delete, edit_save, last_edit } from './global';
+import { note_title, note_body, edit_delete, edit_save, last_edited } from './global';
 import { getNotes, removeNote,  saveNotes, saveEdit, syncPage } from './notes';
 const moment = require('moment');
 
@@ -6,7 +6,7 @@ const noteTitle = note_title();
 const noteBody = note_body();
 const editDlt = edit_delete();
 const editSave = edit_save();
-const lastEdit = last_edit();
+const lastEdited = last_edited();
 
 const notes = getNotes();
 
@@ -27,7 +27,7 @@ const lastUpdate = (time) => {
 
 const save = () => {
     const timeStamp = moment().valueOf();
-    lastEdit.textContent = lastUpdate(timeStamp);
+    lastEdited.textContent = lastUpdate(timeStamp);
     // console.log(typeof moment(timeStamp).fromNow())
     const title = noteTitle.value;
     const body = noteBody.value;
@@ -38,9 +38,9 @@ const save = () => {
 
 noteTitle.value = note.title;
 noteBody.value = note.body;
-lastEdit.textContent = lastUpdate(note.updatedAt);
+lastEdited.textContent = lastUpdate(note.updatedAt);
 
-// setInterval(() => { lastEdit.textContent = lastUpdate(note.updatedAt); }, 3000);
+// setInterval(() => { lastEdited.textContent = lastUpdate(note.updatedAt); }, 3000);
 
 
 noteTitle.addEventListener('input', function() {       

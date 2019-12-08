@@ -9,8 +9,8 @@ const getFilters = () => filters;
 
 const setFilters = (filterValue) => {
     switch (filterValue) {
-        case 0:
-            filters.sortBy = 'byEdit';
+        case 0:            
+            filters.sortBy = 'byEdit';            
             break;
         
         case 1:
